@@ -38,7 +38,7 @@ def maxSubArray(nums: List[int], k: int) -> int:
 
 print(maxSubArray([1,12,-5,-6,50,3], 4))
 
-# More optimize solution - time-complexity: O(n)
+# More optimize solution - time-complexity: O(n) ~ O(n-k-2)
 
 def maxSubArray2(nums: List[int], k: int) -> int:
     windowSum = sum(nums[:k])
