@@ -1,4 +1,4 @@
-def reverseVowels(self, s: str) -> str:
+def reverseVowels(s: str) -> str:
     sList = list(s)
     start = 0
     end = len(sList) - 1
