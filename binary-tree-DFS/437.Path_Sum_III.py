@@ -6,6 +6,45 @@ class TreeNode:
 
 
 p1 = TreeNode(
+    val = 10,
+    left = TreeNode(
+                val = 5, 
+                left = TreeNode(
+                    val=3, 
+                    left=TreeNode(
+                        val=3, 
+                        left=None,
+                        right=None
+                    ),
+                    right=TreeNode(
+                        val=-2, 
+                        left=None,
+                        right=None
+                    )
+                ),
+                right = TreeNode(
+                        val=2, 
+                        left=None,
+                        right=TreeNode(
+                            val=1, 
+                            left=None,
+                            right=None
+                        )
+                    )
+        ),
+    right = TreeNode(
+                val=-3, 
+                left= None, 
+                right=TreeNode(
+                    val=11, 
+                    left=None,
+                    right=None
+                )
+            )
+    
+)
+
+p2 = TreeNode(
     val = 5,
     left = TreeNode(
                 val = 4, 
@@ -48,75 +87,68 @@ p1 = TreeNode(
     
 )
 
-p2 = TreeNode(
-    val = 1,
-    left = TreeNode(
-            val = 2, 
-            left = None,
-            right = None
-        ),
-    right = TreeNode(
-            val = 3, 
-            left = None,
-            right = None
-        ),
-    
-)
-
 p3 = TreeNode(
     val = 1,
-    left = TreeNode(
-            val = 2, 
-            left = None,
-            right = None
-        ),
-    right = None
+    left = None,
+    right = TreeNode(
+                val = 2, 
+                left = None,
+                right = TreeNode(
+                    val = 3, 
+                    left= None,
+                    right=TreeNode(
+                        val=4, 
+                        left=None,
+                        right=TreeNode(
+                            val=5, 
+                            left=None,
+                            right=None
+                        )
+                    )
+                )
+            )
+    
 )
 
 def path_sum_III_1(root, targetSum) -> bool:
     
-    result = []
     
-    def dfs(root, sum, path):
-        if not root: return None
-        
-        path.append(root.val)
+    def dfs(root, sum):
+        if not root: return 0
+        count = 0 
         sum += root.val
-        if not root.left and not root.right and sum == targetSum:
-            result.append(path.copy())
-        else:
-            dfs(root.left, sum, path)
-            dfs(root.right, sum, path)
-        path.pop()
+        if sum == targetSum:
+           count += 1 
+        count += dfs(root.left, sum)
+        count += dfs(root.right, sum)
+        return count
     
     
-    dfs(root, 0, [])
-    return result
+    if not root: return 0
+    return path_sum_III_1(root.left, targetSum) + dfs(root, 0) + path_sum_III_1(root.right, targetSum)
+        
 
 ##Solution-2 (with using extra variable to store sum)
 def path_sum_III_2(root, targetSum) -> bool:
-    
-    result = []
-    
-    def dfs(root, targetSum, path):
-        if not root: return None
         
-        path.append(root.val)
+    def dfs(root, targetSum):
+        if not root: return 0
+        
+        count = 0
         targetSum -= root.val
-        if not root.left and not root.right and targetSum == 0:
-            result.append(path.copy())
-        else:
-            dfs(root.left, targetSum, path)
-            dfs(root.right, targetSum, path)
-        path.pop()    
+        if targetSum == 0:
+            count += 1
+        count += dfs(root.left, targetSum)
+        count += dfs(root.right, targetSum)
+        return count
     
-    dfs(root, targetSum, [])
-    return result
+    if not root: return 0
+    return dfs(root, targetSum) + path_sum_III_2(root.right, targetSum) + path_sum_III_2(root.left, targetSum)
 
-print("path sum equal: ", path_sum_III_1(p1, 22))
-print("path sum equal: ", path_sum_III_1(p2, 5))
-print("path sum equal: ", path_sum_III_1(p3, 0))
+print("path sum equal: ", path_sum_III_1(p1, 8))
+print("path sum equal: ", path_sum_III_1(p2, 22))
+print("path sum equal: ", path_sum_III_1(p3, 3))
 print("\n")
-print("path sum equal: ", path_sum_III_2(p1, 22))
-print("path sum equal: ", path_sum_III_2(p2, 5))
-print("path sum equal: ", path_sum_III_2(p3, 0))
+print("path sum equal: ", path_sum_III_2(p1, 8))
+print("path sum equal: ", path_sum_III_2(p2, 22))
+print("path sum equal: ", path_sum_III_2(p3, 3))
