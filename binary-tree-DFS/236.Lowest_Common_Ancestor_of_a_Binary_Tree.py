@@ -104,6 +104,7 @@ def lowestCommonAncestor(root, p, q):
         
 
 
+
 print(lowestCommonAncestor(p1, 5, 1).val)  #3
 print(lowestCommonAncestor(p1, 5, 4).val)  #5
 print(lowestCommonAncestor(p2, 1, 2).val)  #1
