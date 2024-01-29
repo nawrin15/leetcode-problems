@@ -66,20 +66,36 @@ def minDepth(root) -> int:
     return dfs(root)
 
 ##using bfs
-def minDepth(root) -> int:
+def minDepth2(root) -> int:
     def bfs(root):
-        if not root: 
-            return 0
-        if not (root.left or root.right): 
-            return 1
-        if not root.left:
-            return 1 + dfs(root.right)
-        if not root.right:
-            return 1 + dfs(root.left)
-        return 1 + min(dfs(root.left),  dfs(root.right))
-        
-    return dfs(root)
+        queue =[root]
+        level = 0
+        while queue:
+            level += 1
+            print([node.val for node in queue])
+            for i in range(len(queue)):
+                node = queue.pop(0)
+                
+                if not (node.left or node.right): 
+                    return level
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+    
+    
+    return 0 if not root else bfs(root) 
+
 
 print(minDepth(p1))
 print(minDepth(p2))
+
+print(minDepth2(p1))
+print(minDepth2(p2))
+
+queue = ['apple']
+
+for i in range(len(queue)):
+    queue.append("orange")
+    print(queue[i])
           
