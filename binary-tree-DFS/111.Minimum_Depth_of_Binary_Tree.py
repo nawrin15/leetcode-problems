@@ -93,9 +93,5 @@ print(minDepth(p2))
 print(minDepth2(p1))
 print(minDepth2(p2))
 
-queue = ['apple']
 
-for i in range(len(queue)):
-    queue.append("orange")
-    print(queue[i])
           
