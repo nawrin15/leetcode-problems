@@ -26,7 +26,6 @@ def isPowerOfTwo1(n: int) -> bool:
 def isPowerOfTwo2(n: int) -> bool:
     return n > 0 and (n & (n - 1) == 0)
 
-
 def isPowerOfTwo3(n: int) -> bool:
     return n > 0 and ((2 ** 30) % n == 0)
 
