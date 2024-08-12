@@ -36,9 +36,11 @@ students3 = [1,3,2,6]
 # In total, 1 + 3 + 0 + 0 = 4 moves were used.
 
 def minMovesToSeat(seats, students) -> int:
-    seats = sorted(seats)
-    students = sorted(students)
-    return sum([abs(seat-student) for seat, student in zip(seats, students)])
+    # seats = sorted(seats)
+    # students = sorted(students)
+    # return sum([abs(seat-student) for seat, student in zip(seats, students)])
+    # return sum(abs(seat-student) for seat, student in zip(seats, students))
+    return sum(abs(seat-student) for seat, student in zip(sorted(seats), sorted(students)))
 
 print(minMovesToSeat(seats1, students1))
 print(minMovesToSeat(seats2, students2))
