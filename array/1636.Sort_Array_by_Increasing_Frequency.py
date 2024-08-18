@@ -20,9 +20,46 @@ from collections import Counter
 
 def frequencySort(nums):
     counter = Counter(nums)
-    print(counter)
-    return 
+    return sorted(nums, key=lambda x: (counter[x], -x))
 
 print(frequencySort(nums1))
 print(frequencySort(nums2))
 print(frequencySort(nums3))
+
+
+def frequencySort1(nums):
+    counts = Counter(nums)
+    pairs = []
+    for key, value in counts.items():
+        pairs.append((value, -key))
+    pairs.sort()
+    ans = []
+    for times, num in pairs:
+        ans += [-num] * times
+    return ans
+
+print(frequencySort1(nums1))
+print(frequencySort1(nums2))
+print(frequencySort1(nums3))
+
+
+def frequencySort2(nums):
+    count = Counter(nums)
+    def sorting(num):
+        return (count[num],-num)
+    nums.sort(key=sorting)
+    return nums
+
+print(frequencySort2(nums1))
+print(frequencySort2(nums2))
+print(frequencySort2(nums3))
+
+def frequencySort3(nums):
+    freq = [0] * 201
+    for x in nums:
+        freq[x + 100] -= 1
+    return sorted(nums, key=lambda x: (freq[x + 100], x), reverse=True)
+
+print(frequencySort3(nums1))
+print(frequencySort3(nums2))
+print(frequencySort3(nums3))
