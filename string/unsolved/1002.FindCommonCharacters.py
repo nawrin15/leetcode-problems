@@ -10,10 +10,10 @@ words2 = ["cool","lock","cook"]
 # Output: ["c","o"]
 
 def commonChars(words):
-    res = set(words[0])
-    for i in range(1, len(words)):
-        word_set = set(words[i])
-        res &= word_set
+    # res = set(words[0])
+    # for i in range(1, len(words)):
+    #     word_set = set(words[i])
+    #     res &= word_set
 
     return list(res)
 
