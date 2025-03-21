@@ -8,6 +8,8 @@ s2 = "loveleetcode"
 
 s3 = "aabb"
 # Output: -1
+s4="aadadaad"
+#output: -1
 
 def firstUniqChar(s: str) -> int:
     count = defaultdict(int)
@@ -21,3 +23,5 @@ def firstUniqChar(s: str) -> int:
 print(firstUniqChar(s1))
 print(firstUniqChar(s2))
 print(firstUniqChar(s3))
+print(firstUniqChar(s4))
+

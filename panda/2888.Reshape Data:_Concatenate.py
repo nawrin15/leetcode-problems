@@ -1,0 +1,36 @@
+import pandas as pd
+# Example 1:
+
+# Input:
+# df1
+# +------------+---------+-----+
+# | student_id | name    | age |
+# +------------+---------+-----+
+# | 1          | Mason   | 8   |
+# | 2          | Ava     | 6   |
+# | 3          | Taylor  | 15  |
+# | 4          | Georgia | 17  |
+# +------------+---------+-----+
+# df2
+# +------------+------+-----+
+# | student_id | name | age |
+# +------------+------+-----+
+# | 5          | Leo  | 7   |
+# | 6          | Alex | 7   |
+# +------------+------+-----+
+# Output:
+# +------------+---------+-----+
+# | student_id | name    | age |
+# +------------+---------+-----+
+# | 1          | Mason   | 8   |
+# | 2          | Ava     | 6   |
+# | 3          | Taylor  | 15  |
+# | 4          | Georgia | 17  |
+# | 5          | Leo     | 7   |
+# | 6          | Alex    | 7   |
+# +------------+---------+-----+
+# Explanation:
+# The two DataFramess are stacked vertically, and their rows are combined.
+
+def concatenateTables(df1: pd.DataFrame, df2: pd.DataFrame) -> pd.DataFrame:
+    return pd.concat([df1, df2])
